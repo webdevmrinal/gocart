@@ -1,12 +1,28 @@
 import "./Header.scss";
 
-import {TbSearch} from 'react-icons/tb'
-import {AiOutlineHeart} from 'react-icons/ai'
-import {CgShoppingCart} from 'react-icons/cg'
+import { TbSearch } from "react-icons/tb";
+import { AiOutlineHeart } from "react-icons/ai";
+import { CgShoppingCart } from "react-icons/cg";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 80) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="main-header">
+    <header className={`main-header ${scrolled?'sticky-header':''}`}>
       <div className="header-content">
         <ul className="left">
           <li>Home</li>
@@ -15,12 +31,12 @@ const Header = () => {
         </ul>
         <div className="center">GO CART</div>
         <div className="right">
-            <TbSearch />
-            <AiOutlineHeart />
-            <span className="cart-icon">
-                <CgShoppingCart />
-                <span>5</span>
-            </span>
+          <TbSearch />
+          <AiOutlineHeart />
+          <span className="cart-icon">
+            <CgShoppingCart />
+            <span>5</span>
+          </span>
         </div>
       </div>
     </header>
