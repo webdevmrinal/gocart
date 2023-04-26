@@ -6,6 +6,7 @@ import { CgShoppingCart } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import Cart from "./../Cart/Cart";
 import Search from "./Search/Search";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -29,11 +30,15 @@ const Header = () => {
       <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
         <div className="header-content">
           <ul className="left">
-            <li>Home</li>
+            <li>
+              <Link to="/" style={{textDecoration:"none", color:"white"}}>Home</Link>
+            </li>
             <li>About</li>
             <li>Categories</li>
           </ul>
-          <div className="center">GO CART</div>
+          <div className="center">
+            <Link to="/" style={{textDecoration:"none", color:"white"}}>GO CART</Link>
+          </div>
           <div className="right">
             <TbSearch onClick={() => setShowSearch(true)} />
             <AiOutlineHeart />

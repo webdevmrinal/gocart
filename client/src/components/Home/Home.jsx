@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import "./Home.scss";
 
 import Banner from "./Banner/Banner";
@@ -30,7 +32,9 @@ const Home = () => {
     });
   };
 
-  return (!categories || !products)?<div>Loading...</div>:(
+  return !categories || !products ? (
+    <div>Loading...</div>
+  ) : (
     <div>
       <Banner />
       <div className="main-content">
